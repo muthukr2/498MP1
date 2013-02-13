@@ -1,58 +1,52 @@
 
-function addListItem()
-{
-		 var text = $("#new-text").val();
-		 if(text!="")
-			{
-		 		  var div=$("#add");
-		    	  div.animate({height:'100px',opacity:'0.4'},"slow");
-				  div.animate({width:'100px',opacity:'0.8'},"slow");
-				  div.animate({height:'50px',opacity:'0.4'},"slow");
-				  div.animate({width:'50px',opacity:'0.8'},"slow");
-		  		  localStorage.setItem( "task-"+i, text);
-				  $("#todolist").append('<li class="deletelist" id=task-'+i+'><div id="contain"><div id="left"><input type="checkbox" width="50" class="markasdone" /></div><div id="center">'+localStorage.getItem('task-'+i)+'</div><div id="right"><Button class="delete">Delete</button></div></div></li>');
-				  $("#new-text").val('');
-				  i++;
-		 }
-}
-function DeleteAllDoneTasks()
-{
-	  var findchkitems=document.getElementsByClassName("deletelist");
-     	  $("#todolist").append(findchkitems.length);
-        for (var i=0;i<findchkitems.length;i++){
-		  $("#todolist").append(findchkitems.child);
-		
-               if (findchkitems[i].child(contain).child(left).child(markasdone).checked)
-               {
+/* Javascript functionalities for various events */
 
-			   	  $("#todolist").append(i);
-			   
-				  $(this).parent().parent().parent().remove();
-				
-			   }
-                
-            }
-}
-function deleteItem()
-{
-		 $(this).parent().parent().parent().remove();
-}
-function deleteallselected()
-{
+// addListItem is a function that adds a new item entered into the list
 
-$("input:checkbox:checked").each( 
-function() 
-{ 
-    if (this.checked) 
-    { 
-		$(this).parent().parent().parent().remove();
-	 }
-  });  
-  
+function addListItem() {
+	var text = $( "#new-text" ).val();
+	if ( text!="" ){
+		var div=$( "#add" );
+		div.animate({height:'100px',opacity:'0.4'},"slow");
+		div.animate({width:'100px',opacity:'0.8'},"slow");
+		div.animate({height:'50px',opacity:'0.4'},"slow");
+		div.animate({width:'50px',opacity:'0.8'},"slow");
+		localStorage.setItem( "task-"+i, text );
+		// Storing them into the local storage
+		$( "#todolist" ).append( '<li class="deletelist" id=task-'+i+'><table><div id="contain"><tr><div id="left"><td><input type="checkbox" width="50" class="markasdone" /></div></td><td><div id="center">'+localStorage.getItem('task-'+i)+'</div></td><td><div id="right"><Button class="delete">Delete</button></div></td></div></tr></table></li>' );
+		$( "#new-text" ).val('');
+		i++;
+	}
 }
-
-function markasDone()
-{
+// deleteAllDoneTasks deletes the items that are marked as done
+function DeleteAllDoneTasks() {
+	var findchkitems=document.getElementsByClassName( "deletelist" );
+    $( "#todolist" ).append(findchkitems.length);
+    // Continuously find the items if they are checked
+    for ( var i=0;i<findchkitems.length;i++ ) {
+    	$( "#todolist" ).append( findchkitems.child );
+		if ( findchkitems[i].child(contain).child(left).child(markasdone).checked ) {
+			$( "#todolist" ).append( i );
+	        // If item found checked -- then delete it
+			$(this).parent().parent().parent().remove();	
+		}        
+    }
+}
+// deleteItem to delete a particular item from the list for which the delete button is pressed
+function deleteItem() {
+	 $(this).parent().parent().parent().parent().parent().parent().remove();
+}
+//deleteAllSelected deletes the items that are marked as done
+function deleteallselected() {
+// Continuously find the items if they are checked
+	$("input:checkbox:checked").each(function() { 
+		if (this.checked) { 
+			$(this).parent().parent().parent().parent().parent().remove();
+		}
+	});  
+}
+//markasDone will mark items as completed
+function markasDone() {
 		 if($(this).parent().parent().css('textDecoration')=='line-through'){
 		 	$(this).parent().parent().css('textDecoration','none');
 		 }
@@ -60,45 +54,46 @@ function markasDone()
 		    $(this).parent().parent().css('textDecoration','line-through');
 		 }
 }
-function clearStorage()
-{
+//clearStorage clears the local storage
+function clearStorage() {
  localStorage.clear();		 
 }
-
+//sortUnorderedList sorts the unordered list
 function sortUnorderedList(ul) {
-	 
 	  ul = document.getElementById(ul);
-
 	  var listing = ul.getElementsByTagName("LI");
 	  var values = [];
-
-	  for(var i = 0, l = listing.length; i < l; i++)
-	    values.push(listing[i].innerHTML);
-
+	  for(var i = 0, l = listing.length; i < l; i++) {
+		  values.push(listing[i].innerHTML);
+	  }
 	  values.sort();
-
-
-	  for(var i = 0, l = listing.length; i < l; i++)
+	  for(var i = 0, l = listing.length; i < l; i++) {
 	    listing[i].innerHTML = values[i];
+	  }
+}
+$(function() {
+	i = 0;
+	for( i = 0; i < localStorage.length; i++) { 
+		if(localStorage.length!=0) {
+			$("#todolist").append('<li class="deletelist" id=task-'+i+'><table><div id="contain"><tr><div id="left"><td><input type="checkbox" width="50" class="markasdone" /></div></td><td><div id="center">'+localStorage.getItem('task-'+i)+'</div></td><td><div id="right"><Button class="delete">Delete</button></div></td></div></tr></table></li>');
+		}
 	}
-
-$(function()
-{
-
- 			 i = 0;
-			    for( i = 0; i < localStorage.length; i++)
-					 if(localStorage.length!=0)
-				  $("#todolist").append('<li class="deletelist" id=task-'+i+'><div id="contain"><div id="left"><input type="checkbox" width="50" class="markasdone" /></div><div id="center">'+localStorage.getItem('task-'+i)+'</div><div id="right"><Button class="delete">Delete</button></div></div></li>');
-
-			 $("#add").on('click',addListItem);
-			 $("#DeleteAll").on('click',deleteallselected);
-	 		 $("#clear").on('click',clearStorage);
-			 $("#sort").on('click',sortUnorderedList("todolist"));
-			 $(document).on('click','.delete',deleteItem);
-			 $(document).on('click','.markasdone',markasDone);
-			 $("#addNewList").on('click',addNewList);
-			 $("#toggler1").click(function() {
-			   		$(this).find('img').toggle();
-			   });
-
+		// add new list item
+		$("#add").on('click',addListItem);
+		// delete all the selected items
+		$("#DeleteAll").on('click',deleteallselected);
+		// clear storage function
+	 	$("#clear").on('click',clearStorage);
+	 	// sort all list items
+		$("#sort").on('click',sortUnorderedList("todolist"));
+		// delete selected item
+		$(document).on('click','.delete',deleteItem);
+		// mark a selected item as done
+		$(document).on('click','.markasdone',markasDone);
+		// add a new list
+		$("#addNewList").on('click',addNewList);
+		// to toggle between the title images
+		$("#toggler1").click(function() {
+			$(this).find('img').toggle();
+		});
 });
