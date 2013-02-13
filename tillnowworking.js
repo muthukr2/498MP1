@@ -13,7 +13,7 @@ function addListItem() {
 		div.animate({width:'50px',opacity:'0.8'},"slow");
 		localStorage.setItem( "task-"+i, text );
 		// Storing them into the local storage
-		$( "#todolist" ).append( '<li class="deletelist" id=task-'+i+'><table><div id="contain"><tr><div id="left"><td><input type="checkbox" width="50" class="markasdone" /></div></td><td><div id="center">'+localStorage.getItem('task-'+i)+'</div></td><td><div id="right"><Button class="delete">Delete</button></div></td></div></tr></table></li>' );
+		$("#todolist").append('<li class="deletelist" id=task-'+i+'><table id="table"><div id="contain"><tr><div id="left"><td align="left"><input type="checkbox" width="50" class="markasdone" /></div></td><td><div id="center">'+localStorage.getItem('task-'+i)+'</div></td><td><div id="right"><Button class="delete"><img src="delete.jpg" style="background-color:color;" height=15;width=15/></button></div></td></div></tr></table></li>');
 		$( "#new-text" ).val('');
 		i++;
 	}
@@ -77,7 +77,7 @@ $(function() {
 	i = 0;
 	for( i = 0; i < localStorage.length; i++) { 
 		if(localStorage.length!=0) {
-			$("#todolist").append('<li class="deletelist" id=task-'+i+'><table><div id="contain"><tr><div id="left"><td><input type="checkbox" width="50" class="markasdone" /></div></td><td><div id="center">'+localStorage.getItem('task-'+i)+'</div></td><td><div id="right"><Button class="delete">Delete</button></div></td></div></tr></table></li>');
+			$("#todolist").append('<li class="deletelist" id=task-'+i+'><table id="table"><div id="contain"><tr><div id="left"><td align="left"><input type="checkbox" width="50" class="markasdone" /></div></td><td><div id="center">'+localStorage.getItem('task-'+i)+'</div></td><td><div id="right"><Button class="delete"><img src="delete.jpg" style="background-color:color;" height=15;width=15/></button></div></td></div></tr></table></li>');
 		}
 	}
 		// add new list item
