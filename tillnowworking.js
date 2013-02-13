@@ -1,4 +1,3 @@
-
 /* Javascript functionalities for various events */
 
 // addListItem is a function that adds a new item entered into the list
@@ -49,12 +48,17 @@ function deleteallselected() {
 function markasDone() {
 		 if($(this).parent().parent().css('textDecoration')=='line-through'){
 		 	$(this).parent().parent().css('textDecoration','none');
+		 	$(this).parent().parent().css('color','black');
+			$(this).parent().parent().css('font-family','Arial');
 		 }
 		 else{
 		    $(this).parent().parent().css('textDecoration','line-through');
+		    $(this).parent().parent().css('color','green');
+			$(this).parent().parent().css('font-family','Lucida Console');
+			$(this).parent().parent().css('text-transform','uppercase');
+
 		 }
-}
-//clearStorage clears the local storage
+}//clearStorage clears the local storage
 function clearStorage() {
  localStorage.clear();		 
 }
