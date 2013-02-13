@@ -1,8 +1,14 @@
+
 function addListItem()
 {
 		 var text = $("#new-text").val();
 		 if(text!="")
-		 {
+			{
+		 		  var div=$("#add");
+		    	  div.animate({height:'100px',opacity:'0.4'},"slow");
+				  div.animate({width:'100px',opacity:'0.8'},"slow");
+				  div.animate({height:'50px',opacity:'0.4'},"slow");
+				  div.animate({width:'50px',opacity:'0.8'},"slow");
 		  		  localStorage.setItem( "task-"+i, text);
 				  $("#todolist").append('<li class="deletelist" id=task-'+i+'><div id="contain"><div id="left"><input type="checkbox" width="50" class="markasdone" /></div><div id="center">'+localStorage.getItem('task-'+i)+'</div><div id="right"><Button class="delete">Delete</button></div></div></li>');
 				  $("#new-text").val('');
@@ -58,22 +64,24 @@ function clearStorage()
 {
  localStorage.clear();		 
 }
+
 function sortUnorderedList(ul) {
- 
-  ul = document.getElementById(ul);
+	 
+	  ul = document.getElementById(ul);
 
-  var listing = ul.getElementsByTagName("LI");
-  var values = [];
+	  var listing = ul.getElementsByTagName("LI");
+	  var values = [];
 
-  for(var i = 0, l = listing.length; i < l; i++)
-    values.push(listing[i].innerHTML);
+	  for(var i = 0, l = listing.length; i < l; i++)
+	    values.push(listing[i].innerHTML);
 
-  values.sort();
+	  values.sort();
 
 
-  for(var i = 0, l = listing.length; i < l; i++)
-    listing[i].innerHTML = values[i];
-}
+	  for(var i = 0, l = listing.length; i < l; i++)
+	    listing[i].innerHTML = values[i];
+	}
+
 $(function()
 {
 
@@ -89,12 +97,8 @@ $(function()
 			 $(document).on('click','.delete',deleteItem);
 			 $(document).on('click','.markasdone',markasDone);
 			 $("#addNewList").on('click',addNewList);
+			 $("#toggler1").click(function() {
+			   		$(this).find('img').toggle();
+			   });
+
 });
-
-
-
-
-
-
-
-
