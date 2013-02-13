@@ -1,3 +1,4 @@
+
 /* Javascript functionalities for various events */
 
 // addListItem is a function that adds a new item entered into the list
@@ -17,20 +18,6 @@ function addListItem() {
 		i++;
 	}
 }
-// deleteAllDoneTasks deletes the items that are marked as done
-function DeleteAllDoneTasks() {
-	var findchkitems=document.getElementsByClassName( "deletelist" );
-    $( "#todolist" ).append(findchkitems.length);
-    // Continuously find the items if they are checked
-    for ( var i=0;i<findchkitems.length;i++ ) {
-    	$( "#todolist" ).append( findchkitems.child );
-		if ( findchkitems[i].child(contain).child(left).child(markasdone).checked ) {
-			$( "#todolist" ).append( i );
-	        // If item found checked -- then delete it
-			$(this).parent().parent().parent().remove();	
-		}        
-    }
-}
 // deleteItem to delete a particular item from the list for which the delete button is pressed
 function deleteItem() {
 	 $(this).parent().parent().parent().parent().parent().parent().remove();
@@ -38,6 +25,12 @@ function deleteItem() {
 //deleteAllSelected deletes the items that are marked as done
 function deleteallselected() {
 // Continuously find the items if they are checked
+	var div=$( "#DeleteAll" );
+	div.animate({height:'100px',opacity:'0.4'},"slow");
+	div.animate({width:'100px',opacity:'0.8'},"slow");
+	div.animate({height:'50px',opacity:'0.4'},"slow");
+	div.animate({width:'50px',opacity:'0.8'},"slow");
+	
 	$("input:checkbox:checked").each(function() { 
 		if (this.checked) { 
 			$(this).parent().parent().parent().parent().parent().remove();
@@ -46,30 +39,35 @@ function deleteallselected() {
 }
 //markasDone will mark items as completed
 function markasDone() {
-		 if($(this).parent().parent().css('textDecoration')=='line-through'){
-		 	$(this).parent().parent().css('textDecoration','none');
-		 	$(this).parent().parent().css('color','black');
-			$(this).parent().parent().css('font-family','Arial');
-		 }
-		 else{
-		    $(this).parent().parent().css('textDecoration','line-through');
-		    $(this).parent().parent().css('color','green');
-			$(this).parent().parent().css('font-family','Lucida Console');
-			$(this).parent().parent().css('text-transform','uppercase');
-
-		 }
-}//clearStorage clears the local storage
+	if($(this).parent().parent().css('textDecoration')=='line-through'){
+		$(this).parent().parent().css('textDecoration','none');
+	 	$(this).parent().parent().css('color','black');
+		$(this).parent().parent().css('font-family','Arial');
+	 }
+	 else{
+	    $(this).parent().parent().css('textDecoration','line-through');
+	    $(this).parent().parent().css('color','green');
+		$(this).parent().parent().css('font-family','Lucida Console');
+		$(this).parent().parent().css('text-transform','uppercase');
+	 }
+}
+//clearStorage clears the local storage
 function clearStorage() {
- localStorage.clear();		 
+	var div=$( "#clearStorage" );
+	div.animate({height:'100px',opacity:'0.4'},"slow");
+	div.animate({width:'100px',opacity:'0.8'},"slow");
+	div.animate({height:'50px',opacity:'0.4'},"slow");
+	div.animate({width:'50px',opacity:'0.8'},"slow");
+	localStorage.clear();		 
 }
 //sortUnorderedList sorts the unordered list
 function sortUnorderedList(ul) {
-	  ul = document.getElementById(ul);
-	  var listing = ul.getElementsByTagName("LI");
-	  var values = [];
-	  for(var i = 0, l = listing.length; i < l; i++) {
-		  values.push(listing[i].innerHTML);
-	  }
+	ul = document.getElementById(ul);
+	var listing = ul.getElementsByTagName("LI");
+	var values = [];	
+	for(var i = 0, l = listing.length; i < l; i++) {
+		values.push(listing[i].innerHTML);
+	}
 	  values.sort();
 	  for(var i = 0, l = listing.length; i < l; i++) {
 	    listing[i].innerHTML = values[i];
