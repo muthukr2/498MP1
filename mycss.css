@@ -3,7 +3,7 @@ body {
       font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 125%;
       background-color:#FFFFFF;
-    margin: 0;
+	  margin: 0;
 	  padding: 0;
 	  padding-top: 10px;
 	  text-align: center;
@@ -35,11 +35,29 @@ a:active {
           padding: 0;
           margin: 0 auto;
 }
+#todolist { 
+          margin: 20px; 
+          padding: 0; 
+}
+#todolist li { 
+          list-style-type: none; 
+          padding: 3px; 
+}
+#todolist li:nth-child(2n) { 
+          background-color: #FFEBCD; 
+}
+#todolist li:nth-child(2n+1) { 
+          background-color: #FFEBCD; 
+}
+#todolist li:hover { 
+          background-color: #E9967A; 
+}
 .boxed {
        border:none; 
 }
 #wrapper {
-         width:886px; overflow:hidden
+         width:886px; 
+         overflow:hidden
 }
 .left {
       float:left; padding:0
