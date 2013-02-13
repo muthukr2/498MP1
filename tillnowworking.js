@@ -33,10 +33,11 @@ function deleteItem()
 }
 function deleteallselected()
 {
- for( i = 0; i < localStorage.length; i++)
- if(localStorage.length!=0)
+
+$("input:checkbox:checked").each( 
+function() 
 { 
-    if (localStorage.getItem(i).checked) 
+    if (this.checked) 
     { 
 		$(this).parent().parent().parent().remove();
 	 }
