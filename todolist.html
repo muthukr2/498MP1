@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
+    <meta name="dcterms.created" content="Sat, 09 Feb 2013 18:56:53 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>ToDoList</title>
+    <link rel="stylesheet" type="text/css" href="mycss.css">
+  <script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="tillnowworking.js"></script>
+    <style type="text/css">  
+    </style>
+  </head>
+  <body>
+  		<br/>
+		<div id="toggler1">
+			 <img src="togglera.jpg" width="360px" height="150px"/>
+			 <img src="togglerb.jpg" width="360px" height="150px" style="display:none"/>
+		</div>
+		<div style="width:800px"  class="centered">
+			<div id="listitems" style="width:700px;height:200px float:left;">
+			</div>
+		</div>
+		<ul style="list-style: none;" id="todolist" class="toRemoveAllDoneItems">
+		</ul>	
+		<center>
+				<div id="mydiv" style="width:250px" style="alignment-adjust:middle;"><br /><br />		
+					 <input type="text" id="new-text"  width="490"><br/><br />
+					 	<button title="Add" id="add" class="button_add_img"  style="background-color:transparent; padding:0"><img src="add.jpg" height="35" style="background-color:color;"width="40"/></button>
+						&nbsp;&nbsp;
+						<button id="DeleteAll" title="Delete" class="button_add_img" style="background-color:transparent; padding:0"><img src="delete.jpg" height="35" style="background-color:color;"width="40"/></button>
+						&nbsp;&nbsp;<br/><br/>
+						<button title="Add New List" id="addNewList"class="button_add_img" style="background-color:transparent;padding:0"><img src="addlist.jpg" height="35" style="background-color:color;"width="40"/></button>
+						&nbsp;&nbsp;
+						<button title="Sort" id="sort"onClick="document.location.reload(true);" VALUE="Refresh" class="button_add_img" style="background-color:transparent;padding:0"><img src="sort.jpg" height="35" style="background-color:color;"width="40"/></button>
+						&nbsp;&nbsp;<br /><br />
+						<button title="Clear Local Storage" onClick="document.location.reload(true)" id="clear"class="button_add_img" style="background-color:transparent; padding:0"><img src="clearall.jpg" height="55" style="background-color:color;"width="90"/></button>
+						&nbsp;&nbsp;<br /><br /><br />	
+				</div>
+		</center><br /><br /><br />
+  </body>
+</html>
